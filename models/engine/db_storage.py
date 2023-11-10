@@ -86,3 +86,7 @@ class DBStorage:
                 structure[key] = _row
 
             return structure
+
+    def close(self):
+        """closes current session"""
+        self.__session.remove()
