@@ -65,10 +65,9 @@ class DBStorage:
         """initializes created tables in DB."""
 
         Base.metadata.create_all(self.__engine)
-        session_factory = sessionmaker(bind=self.__engine,
+        session = sessionmaker(bind=self.__engine,
                                        expire_on_commit=False)
-        Session = scoped_session(session_factory)
-        self.__session = Session()
+        self.__session = scoped_session(session)
 
     def get_data_from_table(self, cls, structure):
         """Gather data from MySQL Table"""
