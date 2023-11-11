@@ -2,16 +2,16 @@
 """Starts a Flask web app"""
 
 from flask import Flask, render_template
-from models.__init__ import storage
+from models import storage
 
 app = Flask(__name__)
 
 
-@app.route('/state_list', strict_slashes=False)
+@app.route('/states_list', strict_slashes=False)
 def states_list():
-    states = storage.all("State")
-    sort = sorted(states, key=lambda state: state.name)
-    return (render_template('7-states_list.html', states=sort))
+    stored = storage.all("State")
+    states = sorted(stored, key=lambda state: state.name)
+    return (render_template('7-states_list.html', states=states))
 
 
 @app.teardown_appcontext
