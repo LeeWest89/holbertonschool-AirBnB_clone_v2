@@ -37,9 +37,9 @@ DROP TABLE IF EXISTS `amenities`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `amenities` (
   `id` varchar(60) NOT NULL,
-  `name` varchar(128) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `name` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
