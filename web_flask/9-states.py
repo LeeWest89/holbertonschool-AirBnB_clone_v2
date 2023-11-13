@@ -7,14 +7,23 @@ from models import storage
 app = Flask(__name__)
 
 
-@app.route('/states', defaults={'id': None}, strict_slashes=False)
-@app.route('/states/<id>')
-def states_list(id):
+@app.route('/states', strict_slashes=False)
+def states_list():
+    """Creates sorted list of states by name"""
     stored = storage.all("State").values()
     states = sorted(stored, key=lambda state: state.name)
-    if id:
-        id = "State." + id
-    return (render_template('9-states.html', states=states, id=id))
+    return (render_template('9-states.html', states=states))
+
+
+@app.route('/states/<id>')
+def state_cities(id):
+    """Creates sorted list of cities by name for state"""
+    state = storage.get("State", id)
+    if state:
+        cities = sorted(state.cities, key=lambda city: city.name)
+        return (render_template('9-states.html', state=state, cities=cities))
+    else:
+        return render_template('9-states.html', nf=True)
 
 
 @app.teardown_appcontext
