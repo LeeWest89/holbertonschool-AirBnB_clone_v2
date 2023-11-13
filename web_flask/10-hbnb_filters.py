@@ -7,7 +7,7 @@ from models import storage
 app = Flask(__name__)
 
 
-@app.route('/states', strict_slashes=False)
+@app.route('/hbnb_filters', strict_slashes=False)
 def states_list():
     """Creates sorted list of states by name"""
     stored = storage.all("State").values()
