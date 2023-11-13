@@ -77,7 +77,7 @@ class DBStorage:
 
     def get(self, cls, id):
         """Find an object based on id"""
-        if isinstance(cls, str) and isinstance(id, str) and cls in classes \
-            and id is not None:
-            return self.__session.query(classes[cls]).filter_by(id=id).first()
-
+        if isinstance(cls, str) and isinstance(id, str) and \
+                cls in classes and id is not None:
+            return (self.__session.query
+                    (classes[cls]).filter_by(id=id).first())
