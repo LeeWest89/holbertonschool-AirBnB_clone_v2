@@ -14,7 +14,7 @@ def states_list():
     states = sorted(stored, key=lambda state: state.name)
     stored_amenities = storage.all("Amenity").values()
     amenities = sorted(stored_amenities, key=lambda amenity: amenity.name)
-    return (render_template('9-states.html', states=states,
+    return (render_template('10-hbnb_filters.html', states=states,
                             amenities=amenities))
 
 
